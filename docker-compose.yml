@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    restart: always
+    environment:
+      RABBITMQ_DEFAULT_USER: 'NUFT'
+      RABBITMQ_DEFAULT_PASS: 'ADMIN'
+    ports:
+      - 15672:15672                    # Management UI
+      - 5672:5672                      # AMQP port
+
+  custom-service:
+    build:
+      context: .                       
+      dockerfile: Dockerfile.mock
+    ports:
+      - 3000:3000                     # Map the necessary port.
+    depends_on:
+      - rabbitmq                       # Ensure RabbitMQ is started before this service.
+    restart: always
