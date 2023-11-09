@@ -1,6 +1,11 @@
 FROM debian:stable-slim
 
-COPY script.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/script.sh
+# COPY script.sh /usr/local/bin/
+# RUN chmod +x /usr/local/bin/script.sh
 
-CMD ["/usr/local/bin/script.sh"]
+# CMD ["/usr/local/bin/script.sh"]
+
+COPY ./NUTC24 /usr/local/bin/
+RUN chmod +x /usr/local/bin/NUTC24
+
+CMD ["/usr/local/bin/NUTC24"]

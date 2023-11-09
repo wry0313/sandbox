@@ -14,8 +14,8 @@ services:
     build:
       context: .                       
       dockerfile: Dockerfile.mock
-    ports:
-      - 3000:3000                     # Map the necessary port.
+    # ports:
+    #   - 3000:3000                     
     depends_on:
-      - rabbitmq                       # Ensure RabbitMQ is started before this service.
+      - rabbitmq                       
     restart: always
